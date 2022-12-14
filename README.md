@@ -1,42 +1,28 @@
-# Nuxt 3 Minimal Starter
+# VUE.JS pokedex site
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+https://stahlconst-vue-spa.netlify.app/
+build with Vue.js and Tailwind CSS
+Data fetched from pokeapi
+https://pokeapi.co/
 
-## Setup
+## Project setup
 
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
+```
 npm install
-
-# pnpm
-pnpm install --shamefully-hoist
 ```
 
-## Development Server
+### Compiles and hot-reloads for development
 
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
+```
+npm run serve
 ```
 
-## Production
+### Compiles and minifies for production
 
-Build the application for production :
-
-```bash
+```
 npm run build
 ```
 
-Locally preview production build:
+### Customize configuration
 
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+See [Configuration Reference](https://cli.vuejs.org/config/).

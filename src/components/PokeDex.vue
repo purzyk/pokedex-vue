@@ -1,17 +1,26 @@
 <template>
-    <div class="container">
-        <img alt="Vue logo" src="../assets/pikachu.gif">
-        <h1>Pokedex VueJS</h1>
-        <PokemonSearch :apiUrl="apiUrl" @setPokemonUrl="setPokemonUrl" />
-        <PokemonList :pokemonImageUrl="pokemonImageUrl" @setPokemonUrl="setPokemonUrl" />
-        <PokemonDetail v-if="showDetail" :pokemonUrl="pokemonUrl" :pokemonImageUrl="pokemonImageUrl"
-            @closeDetail="closeDetail" />
+
+    <div class="relative pt-10">
+
+        <div v-if="showDetail" class="bg-black absolute top-0 left-0 bottom-0 right-0 z-20 bg-opacity-80"></div>
+        <div class="container mx-auto z-10 relative">
+            <SiteHeader />
+            <PokemonSearch :apiUrl="apiUrl" @setPokemonUrl="setPokemonUrl" />
+            <PokemonList :pokemonImageUrl="pokemonImageUrl" @setPokemonUrl="setPokemonUrl" />
+
+        </div>
+        <div class="z-30 relative">
+            <PokemonDetail v-if="showDetail" :pokemonUrl="pokemonUrl" :pokemonImageUrl="pokemonImageUrl"
+                @closeDetail="closeDetail" />
+        </div>
     </div>
+
 </template>
 <script>
 import PokemonList from "./PokemonList.vue";
 import PokemonDetail from "./PokemonDetail.vue";
 import PokemonSearch from "./PokemonSearch.vue";
+import SiteHeader from "./SiteHeader.vue";
 
 export default {
     data: () => {
@@ -26,7 +35,8 @@ export default {
     components: {
         PokemonList,
         PokemonDetail,
-        PokemonSearch
+        PokemonSearch,
+        SiteHeader
     },
     methods: {
         setPokemonUrl(url) {

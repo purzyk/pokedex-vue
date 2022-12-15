@@ -1,12 +1,12 @@
 <template>
-  <Pokemon />
+  <PokeDex />
 </template>
 <script>
 
-import Pokemon from "../components/Pokemon.vue";
+import PokeDex from "../components/PokeDex.vue";
 export default {
   components: {
-    Pokemon
+    PokeDex
   },
   name: 'Home',
   data() {

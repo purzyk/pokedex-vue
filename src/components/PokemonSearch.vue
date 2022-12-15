@@ -1,23 +1,27 @@
 <template>
-
-    <div class="searchbar" v-if="pokemons">
-        <form @submit.prevent="setPokemonUrl">
-            <div class="container">
-                <input type="text" placeholder="Type your query" v-model="search" @blur="toggle = false"
-                    @focus="toggle = true">
-                <div class="results" v-if="toggle">
-                    <div class="result" v-for="pokemon in pokemonsAutoComplete" :key="pokemon">
-                        <span @click="selectResult(pokemon)" @mousedown.prevent>
-                            {{ pokemon.name }}
-                        </span>
+    <section class="mb-8">
+        <section class="nes-container with-title">
+            <h3 class="title">What is you favourite pokemon?</h3>
+            <div id="textarea" class="item"><label for="textarea_field">Search here</label>
+                <form @submit.prevent="setPokemonUrl">
+                    <div class="mb-4">
+                        <input class="nes-textarea" type="text" placeholder="Type pokemon name" v-model="search"
+                            @blur="toggle = false" @focus="toggle = true">
+                        <div class="results absolute z-10 bg-white" v-if="toggle">
+                            <div class="result" v-for="pokemon in pokemonsAutoComplete" :key="pokemon">
+                                <span @click="selectResult(pokemon)" @mousedown.prevent>
+                                    {{ pokemon.name }}
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <button @click="setPokemonUrl" type="button"
+                        class="mt-4 nes-btn is-primary showcode z-80">Search</button>
+                </form>
             </div>
+        </section>
+    </section>
 
-
-        </form>
-        <i class="fas fa-search" @click="setPokemonUrl">search</i>
-    </div>
 </template>
 
 <script>
@@ -49,6 +53,8 @@ export default {
     methods: {
         selectResult(pokemon) {
             this.search = pokemon.name;
+            this.toggle = false;
+            this.$emit('setPokemonUrl', this.apiUrl + this.search);
         },
         loadPosts() {
             fetch(this.apiUrl + '?limit=100000&offset=0')

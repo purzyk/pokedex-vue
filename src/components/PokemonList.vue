@@ -2,8 +2,8 @@
 
     <main class="grid grid-cols-1 items-start">
         <div class="sticky w-full col-span-1 top-0 flex flex-wrap bg-white mb-8 z-10">
-            <section class="w-full nes-container with-title bg-white" v-if="filteredPokemons.length > 0">
-                <h3 class="title">My favourite pokemons</h3>
+            <div class="w-full nes-container with-title bg-white" v-if="filteredPokemons.length > 0">
+                <h3 class="title">{{ favTitle }}</h3>
                 <div class="flex flex-wrap w-full items-center">
                     <div class="relative" v-for="(pokemon, index) in filteredPokemons" :key="'poke' + index">
                         <button @click="$emit('setPokemonUrl', pokemon.url)">
@@ -14,43 +14,33 @@
                                 :class="{ 'is-transparent': !pokemon.isFav }"></i></button>
                     </div>
                 </div>
-            </section>
+            </div>
 
         </div>
         <div class="col-span-1">
-            <section class="showcase ">
-                <section class="nes-container with-title">
-                    <h3 class="title">Pokemons</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                        <div class="item" v-for="(pokemon, index) in pokemons" :key="'poke' + index">
-                            <div class="nes-container with-title is-centered relative">
-                                <p class="title"> {{ pokemon.name }}</p>
-
-                                <button class="absolute top-2 right-2" @click="favToggle(pokemon)"> <i
-                                        class="nes-icon is-medium heart"
-                                        :class="{ 'is-transparent': !pokemon.isFav }"></i></button>
-                                <img class="h-50 m-auto" style="image-rendering: pixelated;"
-                                    :src="pokemonImageUrl + pokemon.id + '.png'" />
-                                <button type="button" class="nes-btn is-primary showcode"
-                                    @click="$emit('setPokemonUrl', pokemon.url)">SHOW
-                                    DETAILS</button>
-                            </div>
+            <div class="nes-container with-title">
+                <h3 class="title">{{ pokemonsTitle }}</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    <div class="item" v-for="(pokemon, index) in pokemons" :key="'poke' + index">
+                        <div class="nes-container with-title is-centered relative">
+                            <p class="title"> {{ pokemon.name }}</p>
+                            <button class="absolute top-2 right-2" @click="favToggle(pokemon)"> <i
+                                    class="nes-icon is-medium heart"
+                                    :class="{ 'is-transparent': !pokemon.isFav }"></i></button>
+                            <img class="h-50 m-auto" style="image-rendering: pixelated;"
+                                :src="pokemonImageUrl + pokemon.id + '.png'" />
+                            <button type="button" class="nes-btn is-primary showcode"
+                                @click="$emit('setPokemonUrl', pokemon.url)">{{ buttonCopy }}</button>
                         </div>
-                        <div id="scroll-trigger" ref="infinitescrolltrigger">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </div>
-                        <Observer @intersect="intersected" />
                     </div>
-                </section>
-
-            </section>
-
-
+                    <div id="scroll-trigger" ref="infinitescrolltrigger">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <Observer @intersect="intersected" />
+                </div>
+            </div>
         </div>
-
-
     </main>
-
 </template>
   
 <script>
@@ -64,6 +54,9 @@ export default {
     emits: ["favToggle", "setPokemonUrl"],
     data: () => {
         return {
+            favTitle: 'My favourite pokemons',
+            pokemonsTitle: 'Pokemons',
+            buttonCopy: 'SHOW DETAILS',
             apiUrl: "https://pokeapi.co/api/v2/pokemon?limit=10",
             pokemons: [],
             postsPerPage: 5,

@@ -1,11 +1,11 @@
 <template>
     <section class="mb-8">
-        <section class="nes-container with-title">
-            <h3 class="title">What is you favourite pokemon?</h3>
-            <div id="textarea" class="item"><label for="textarea_field">Search here</label>
+        <div class="nes-container with-title">
+            <h3 class="title">{{ title }}</h3>
+            <div id="textarea" class="item"><label for="textarea_field">{{ searchHere }}</label>
                 <form @submit.prevent="setPokemonUrl">
                     <div class="mb-4">
-                        <input class="nes-textarea" type="text" placeholder="Type pokemon name" v-model="search"
+                        <input class="nes-textarea" type="text" :placeholder="placeholder" v-model="search"
                             @blur="toggle = false" @focus="toggle = true">
                         <div class="results absolute z-10 bg-white" v-if="toggle">
                             <div class="result" v-for="pokemon in pokemonsAutoComplete" :key="pokemon">
@@ -15,13 +15,13 @@
                             </div>
                         </div>
                     </div>
-                    <button @click="setPokemonUrl" type="button"
-                        class="mt-4 nes-btn is-primary showcode z-80">Search</button>
+                    <button @click="setPokemonUrl" type="button" class="mt-4 nes-btn is-primary showcode z-80">{{
+                            searchButton
+                    }}</button>
                 </form>
             </div>
-        </section>
+        </div>
     </section>
-
 </template>
 
 <script>
@@ -39,15 +39,22 @@ export default {
                     }
                 });
             }
+            else {
+                this.pokemonsAutoComplete = [];
+            }
         }
     },
     data: () => {
         return {
+            title: 'What is you favourite pokemon?',
+            searchHere: 'Search here',
+            placeholder: 'Search...',
+            searchButton: 'Search',
             search: '',
             toggle: false,
             pokemons: [],
             pokemonsAutoComplete: [],
-            searchvalue: '',
+
         }
     },
     methods: {

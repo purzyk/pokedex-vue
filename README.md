@@ -1,9 +1,18 @@
 # VUE.JS pokedex site
 
-https://stahlconst-vue-spa.netlify.app/
+https://purzycki-pokedex.netlify.app/
 build with Vue.js and Tailwind CSS
 Data fetched from pokeapi
 https://pokeapi.co/
+
+## Project features
+
+- Pokemon list
+- Load more on scroll
+- Search pokemons by name
+- Autocomplete search input
+- Add pokemon to favorites
+- Display detailed informations about pokemon
 
 ## Project setup
 

@@ -1,53 +1,53 @@
 <template>
     <div class="relative ">
-        <div class="pokemon__detail p-8 bg-white " v-if="show">
-            <section class="showcase mb-4">
-                <section class="nes-container with-title">
+        <div class="pokemon__detail p-2 md:p-8 bg-white fixed top-0 md:top-[10%] left-0 md:left-[10%] w-full md:w-[80%] "
+            v-if="show">
+            <div class="mb-4" v-if="pokemon">
+                <div class="nes-container with-title">
                     <div class="title">{{ pokemon.name }}</div>
                     <div class="flex flex-wrap">
-                        <img v-if="pokemon.sprites.front_default" :src="pokemon.sprites.front_default" />
-                        <img v-if="pokemon.sprites.back_default" :src="pokemon.sprites.back_default" />
-                        <img v-if="pokemon.sprites.front_female" :src="pokemon.sprites.front_female" />
-                        <img v-if="pokemon.sprites.back_female" :src="pokemon.sprites.back_female" />
-                        <img v-if="pokemon.sprites.front_shiny" :src="pokemon.sprites.front_shiny" />
-                        <img v-if="pokemon.sprites.back_shiny" :src="pokemon.sprites.back_shiny" />
-                        <img v-if="pokemon.sprites.front_shiny_female" :src="pokemon.sprites.front_shiny_female" />
-                        <img v-if="pokemon.sprites.back_shiny_female" :src="pokemon.sprites.back_shiny_female" />
+                        <img class="max-w-[30%]" v-if="pokemon.sprites.front_default"
+                            :src="pokemon.sprites.front_default" />
+                        <img class="max-w-[30%]" v-if="pokemon.sprites.back_default"
+                            :src="pokemon.sprites.back_default" />
+                        <img class="max-w-[30%]" v-if="pokemon.sprites.front_female"
+                            :src="pokemon.sprites.front_female" />
+                        <img class="max-w-[30%]" v-if="pokemon.sprites.back_female"
+                            :src="pokemon.sprites.back_female" />
+                        <img class="max-w-[30%]" v-if="pokemon.sprites.front_shiny"
+                            :src="pokemon.sprites.front_shiny" />
+                        <img class="max-w-[30%]" v-if="pokemon.sprites.back_shiny" :src="pokemon.sprites.back_shiny" />
+                        <img class="max-w-[30%]" v-if="pokemon.sprites.front_shiny_female"
+                            :src="pokemon.sprites.front_shiny_female" />
+                        <img class="max-w-[30%]" v-if="pokemon.sprites.back_shiny_female"
+                            :src="pokemon.sprites.back_shiny_female" />
                     </div>
-                    <div class="item">
-                        <div class="mb-8">
-                            <div class="nes-container is-rounded">
-                                <p>Weight:{{ pokemon.weight / 10 }}kg, Height:{{ pokemon.height / 10 }}m</p>
-                            </div>
+                    <div class="mb-8">
+                        <div class="nes-container is-rounded">
+                            <p>{{ weightCopy }}{{ pokemon.weight / 10 }}{{ kg }}, {{ heightCopy }}{{ pokemon.height /
+                                    10
+                            }}{{ m }}
+                            </p>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="mb-8">
-                            <div class="nes-container is-rounded">
-                                <p>Types:</p>
-                                <div class="flex flex-wrap">
-                                    <div class="item mr-4" v-for="(typ, index) in pokemon.types" :key="index">
-                                        <p class="nes-badge">
-                                            <span :class="typ.type.name">{{ typ.type.name }}</span>
-                                        </p>
+                    <div class="mb-8">
+                        <div class="nes-container is-rounded">
+                            <p>{{ typesCopy }}</p>
+                            <div class="flex flex-wrap">
+                                <div class="mr-4" v-for="(typ, index) in pokemon.types" :key="index">
+                                    <p class="nes-badge">
+                                        <span :class="typ.type.name">{{ typ.type.name }}</span>
+                                    </p>
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                </section>
-            </section>
-
-            <div v-if="pokemon">
-
+                </div>
             </div>
-            <h2 v-else>Cannot find your pokemon</h2>
-
-            <button class="nes-btn is-primary showcode" @click="closeDetail">Close</button>
+            <h2 v-else>{{ errorCopy }}</h2>
+            <button class="nes-btn is-primary showcode" @click="closeDetail">{{ buttonCopy }}</button>
         </div>
-        <i v-else> Loading</i>
     </div>
 </template>
   
@@ -59,6 +59,13 @@ export default {
     ],
     data: () => {
         return {
+            buttonCopy: 'Close',
+            errorCopy: 'Cannot find your pokemon',
+            typesCopy: 'Types:',
+            weightCopy: 'Weight:',
+            heightCopy: 'Height:',
+            kg: 'kg',
+            m: 'm',
             show: false,
             pokemon: {}
         }
@@ -97,7 +104,6 @@ export default {
     color: #fff;
     text-align: center;
 }
-
 
 .grass {
     background-color: #038b2c;
@@ -188,17 +194,6 @@ export default {
 .ground {
     background: #5c4646;
     box-shadow: 0 0.5em #5c4646, 0 -0.5em #5c4646, 0.5em 0 #5c4646, -0.5em 0 #5c4646
-}
-
-.pokemon__detail {
-
-    position: fixed;
-    top: 10%;
-    left: 10%;
-    width: 80%;
-
-
-
 }
 </style>
   

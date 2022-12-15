@@ -101,7 +101,6 @@ export default {
     computed: {
         filteredPokemons() {
             return this.pokemons.filter(pokemon => pokemon.isFav === true)
-
         }
     },
     mounted() {

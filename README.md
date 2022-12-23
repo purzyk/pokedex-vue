@@ -1,6 +1,7 @@
-# VUE.JS pokedex site
+# VUE.JS + tailwind pokedex site
 
 https://purzycki-pokedex.netlify.app/
+
 build with Vue.js and Tailwind CSS
 Data fetched from pokeapi
 https://pokeapi.co/

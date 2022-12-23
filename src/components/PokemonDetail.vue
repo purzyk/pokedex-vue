@@ -1,4 +1,5 @@
 <template>
+    <!--Pokemon detail-->
     <div class="relative ">
         <div class="pokemon__detail p-2 md:p-8 bg-white fixed top-0 md:top-[10%] left-0 md:left-[10%] w-full md:w-[80%] "
             v-if="show">

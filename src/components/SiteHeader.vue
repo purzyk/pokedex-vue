@@ -1,4 +1,5 @@
 <template>
+    <!--Site header-->
     <header class="mb-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="nes-container with-title">
@@ -15,7 +16,6 @@
                 <img class="h-[98%] w-[98%] object-cover absolute top-0 left-0" src="../assets/pikachu.gif">
             </figure>
         </div>
-
     </header>
 </template>
 

@@ -3,13 +3,8 @@
         <div v-if="showDetail" class="bg-black absolute top-0 left-0 bottom-0 right-0 z-20 bg-opacity-80"></div>
         <div class="container mx-auto z-10 relative">
             <SiteHeader />
-
-
-
             <PokemonSearch :apiUrl="apiUrl" @setPokemonUrl="setPokemonUrl" />
-
             <PokemonList :pokemonImageUrl="pokemonImageUrl" @setPokemonUrl="setPokemonUrl" />
-
         </div>
         <div class="z-30 relative">
             <PokemonDetail v-if="showDetail" :pokemonUrl="pokemonUrl" :pokemonImageUrl="pokemonImageUrl"

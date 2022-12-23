@@ -1,4 +1,5 @@
 <template>
+    <!--Search Autocomplete-->
     <section class="mb-8">
         <div class="nes-container with-title">
             <h3 class="title">{{ title }}</h3>

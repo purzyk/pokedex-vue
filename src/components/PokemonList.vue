@@ -1,6 +1,6 @@
 <template>
-
     <main class="grid grid-cols-1 items-start">
+        <!--Pokemon favourite list-->
         <div class="sticky w-full col-span-1 top-0 flex flex-wrap bg-white mb-8 z-10">
             <div class="w-full nes-container with-title bg-white" v-if="filteredPokemons.length > 0">
                 <h3 class="title">{{ favTitle }}</h3>
@@ -15,11 +15,11 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="col-span-1">
             <div class="nes-container with-title">
                 <h3 class="title">{{ pokemonsTitle }}</h3>
+                <!--Pokemon list-->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     <div class="item" v-for="(pokemon, index) in pokemons" :key="'poke' + index">
                         <div class="nes-container with-title is-centered relative">
@@ -33,6 +33,7 @@
                                 @click="$emit('setPokemonUrl', pokemon.url)">{{ buttonCopy }}</button>
                         </div>
                     </div>
+                    <!--Observer for load more posts-->
                     <div id="scroll-trigger" ref="infinitescrolltrigger">
                         <i class="fas fa-spinner fa-spin"></i>
                     </div>

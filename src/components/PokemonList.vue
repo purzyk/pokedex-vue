@@ -106,6 +106,12 @@ export default {
     },
     mounted() {
         this.loadPosts();
+        console.log(process.env.MY_VAL);
+        console.log(process.env.VUE_APP_IMAGE_API);
+        console.log(process.MY_VAL);
+        console.log(process.VUE_APP_IMAGE_API);
+        console.log(MY_VAL);
+        console.log(VUE_APP_IMAGE_API);
     },
 
 

@@ -70,7 +70,7 @@ export default {
         setResult(result) {
             this.search = result.name;
             this.isOpen = false;
-            this.$emit('setPokemonUrl', this.apiUrl + this.search);
+            this.$emit('setPokemonUrl', this.apiUrl + '/' + this.search);
         },
         filterResults() {
             this.results = this.pokemons.filter((item) => {

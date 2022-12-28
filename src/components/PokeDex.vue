@@ -23,9 +23,8 @@ import SiteHeader from "./SiteHeader.vue";
 export default {
     data: () => {
         return {
-            pokemonImageUrl:
-                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/",
-            apiUrl: "https://pokeapi.co/api/v2/pokemon/",
+            pokemonImageUrl: process.env.VUE_APP_IMAGE_API,
+            apiUrl: process.env.VUE_APP_ROOT_API,
             pokemonUrl: "",
             showDetail: false
         };

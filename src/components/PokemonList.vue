@@ -58,7 +58,7 @@ export default {
             favTitle: 'My favourite pokemons',
             pokemonsTitle: 'Pokemons',
             buttonCopy: 'SHOW DETAILS',
-            apiUrl: "https://pokeapi.co/api/v2/pokemon?limit=10",
+            apiUrl: process.env.VUE_APP_ROOT_API + "?limit=10",
             pokemons: [],
             postsPerPage: 5,
             nextUrl: '',
